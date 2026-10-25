@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ئەرەب تىلى نەھۋى بىلىملىرىنى ئۆگىنىش پىلانى (الآجرومية)</title>
+    <!-- Google Fonts for Uyghur & Modern Arabic Support -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=UKIJ+Tuz&family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0F172A;
+            --bg-card: #1E293B;
+            --bg-card-hover: #334155;
+            --primary-gold: #F59E0B;
+            --accent-emerald: #10B981;
+            --accent-cyan: #06B6D4;
+            --text-white: #F8FAFC;
+            --text-sub: #94A3B8;
+            --border-line: rgba(241, 245, 249, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-white);
+            font-family: 'UKIJ Tuz', 'Amiri', 'Plus Jakarta Sans', serif;
+            line-height: 1.8;
+            padding: 20px;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Area */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(30,41,59,0.8), rgba(15,23,42,0.9));
+            border: 1px solid var(--border-line);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        header h1 {
+            font-size: 2.4rem;
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-sub);
+            font-size: 1.1rem;
+        }
+
+        .arabic-quote {
+            font-family: 'Amiri', serif;
+            color: var(--accent-emerald);
+            font-size: 1.3rem;
+            margin-top: 15px;
+            direction: ltr;
+        }
+
+        /* Stats Dashboard */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border-right: 4px solid var(--primary-gold);
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-line);
+        }
+
+        .stat-card h4 {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+
+        .stat-card p {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-white);
+        }
+
+        /* Timeline / Weekly Modules */
+        .week-module {
+            background: var(--bg-card);
+            border: 1px solid var(--border-line);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: transform 0.2s ease;
+        }
+
+        .week-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-line);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .week-title {
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            background-color: rgba(245, 158, 11, 0.2);
+            color: var(--primary-gold);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Grid for Lessons */
+        .lesson-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .lesson-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-line);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .lesson-card h3 {
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .arabic-terms {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-emerald);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-family: 'Amiri', serif;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin-bottom: 10px;
+            direction: ltr;
+            text-align: right;
+        }
+
+        .lesson-card ul {
+            list-style-type: none;
+            margin-bottom: 15px;
+        }
+
+        .lesson-card ul li {
+            position: relative;
+            padding-right: 20px;
+            margin-bottom: 8px;
+            color: #CBD5E1;
+            font-size: 0.95rem;
+        }
+
+        .lesson-card ul li::before {
+            content: "•";
+            color: var(--accent-cyan);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            right: 0;
+            top: -2px;
+        }
+
+        /* Interactive Checklist */
+        .check-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border-line);
+        }
+
+        .check-container input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-emerald);
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-line);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            header h1 { font-size: 1.8rem; }
+            .week-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <header>
+        <h1>ئەرەب تىلى نەھۋى (گرامماتىكا) ئۆگىنىش پىلانى</h1>
+        <p>مەركىزىي ئۆگىنىش مەنبەسى: «متن الآجرومية» (خەرىتىلىك ئۆگىنىش سىستېمىسى)</p>
+        <div class="arabic-quote">«الشَّرْطُ فِي الْكَلاَمِ: اللَّفْظُ، الْمُرَكَّبُ، الْمُفِيدُ، بِالْوَضْعِ»</div>
+    </header>
+
+    <!-- Overview Stats -->
+    <div class="dashboard-grid">
+        <div class="stat-card">
+            <h4>ئومۇمىي ۋاقىت</h4>
+            <p>4 ھەپتە (1 ئاي)</p>
+        </div>
+        <div class="stat-card">
+            <h4>ئاساسىي تېما</h4>
+            <p>4 چوڭ بۆلۈم</p>
+        </div>
+        <div class="stat-card">
+            <h4>كۈندىلىك ئۆگىنىش</h4>
+            <p>45 - 60 مىنۇت</p>
+        </div>
+        <div class="stat-card">
+            <h4>ئاخىرقى نىشان</h4>
+            <p>جۈملە تەھلىلى (الإعراب)</p>
+        </div>
+    </div>
+
+    <!-- WEEK 1 -->
+    <div class="week-module">
+        <div class="week-header">
+            <div class="week-title">1-ھەپتە: نەھۋى ئاساسلىرى ۋە سۆز تۈركۈملىرى</div>
+            <span class="badge">1 - 7-كۈنلەر</span>
+        </div>
+        <div class="lesson-grid">
+            <div class="lesson-card">
+                <h3>1. كالام (الكلام) نىڭ شەرتلىرى</h3>
+                <div class="arabic-terms">شروط الكلام: اللفظ، المركب، المفيد، بالوضع</div>
+                <ul>
+                    <li>گەرچە سۆز بولسىمۇ، جۈملە تۈسىنى ئالمىغان بىرلىكلەرنى ئايرىش.</li>
+                    <li>تولۇق مەنىلىك جۈملە (المفيد) بىلەن بىرلىكلەرنىڭ پەرقى.</li>
+                </ul>
+                <label class="check-container">
+                    <input type="checkbox"> <span>ئۆگىنىپ بولدۇم</span>
+                </label>
+            </div>
+
+            <div class="lesson-card">
+                <h3>2. سۆز تۈركۈملىرى (أقسام الكلام)</h3>
+                <div class="arabic-terms">اسم ، فعل ، حرف معنى</div>
+                <ul>
+                    <li>**اسم (ئىسىم)**: ئادەم، ھايۋان، ئۆسۈملۈك، جەمەت، شەھەر ناملىرى.</li>
+                    <li>**فعل (پېئىل)**: ئۆتكەن، ھازىرقى-كەلگۈسى ۋە بۇيرۇق زامان پېئىللىرى.</li>
+                    <li>**حرف (يۈكلىمە/ئايرىغۇچ)**: ئىسىم ۋە پېئىللارنى باغلىغۇچى سۆزلەر.</li>
+                </ul>
+                <label class="check-container">
+                    <input type="checkbox"> <span>ئۆگىنىپ بولدۇم</span>
+                </label>
+            </div>
+
+            <div class="lesson-card">
+                <h3>3. سۆزلەرنىڭ بەلگىلىرى (علامات)</h3>
+                <div class="arabic-terms">الخفض، التنوين، قد، السين، سوف</div>
+                <ul>
+                    <li>**ئىسىم بەلگىلىرى**: الخفض (ئېگىلىك)، التنوين، الـ (ئېنىقلىق ئېلەم).</li>
+                    <li>**پېئىل بەلگىلىرى**: قد، السين (سـ)، سوف، تاء التأنيث الساكنة.</li>
+                    <li>**ھەرپ بەلگىسى**: ئىسىم بىلەن پېئىلنىڭ بەلگىلىرىنى قوبۇل قىلماسلىقى.</li>
+                </ul>
+                <label class="check-container">
+                    <input type="checkbox"> <span>ئۆگىنىپ بولدۇم</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- WEEK 2 -->
+    <div class="week-module">
+        <div class="week-header">
+            <div class="week-title">2-ھەپتە: ئېئىراب (الإعراب) ۋە بەلگىلىرى</div>
+            <span class="badge">8 - 14-كۈنلەر</span>
+        </div>
+        <div class="lesson-grid">
+            <div class="lesson-card">
+                <h3>1. ئېئىرابنىڭ تۈرلىرى (أقسام الإعراب)</h3>
+                <div class="arabic-terms">رفع ، نصب ، خفض ، جزم</div>
+                <ul>
+                    <li>**ئىسىملارغا خاس**: رفع، نصب، خفض (جر).</li>
+                    <li>**پېئىللارغا خاس**: رفع، نصب، جزم.</li>
+                    <li>مۇئرەب (الإعراب) بىلەن مەبنىي (البناء) نىڭ ئاساسىي پەرقى.</li>
+                </ul>
+                <label class="check-container">
+                    <input type="checkbox"> <span>ئۆگىنىپ بولدۇم</span>
+                </label>
+            </div>
+
+            <div class="lesson-card">
+                <h3>2. باش بەلگىلەر (علامات الإعراب الأصلية)</h3>
+                <div class="arabic-terms">الضمة ، الفتحة ، الكسرة ، السكون</div>
+                <ul>
+                    <li>**الضمة**: رفع بەلگىسى (مۇفرەد ئىسىم، جەمى تكسير، جەمى مؤنث).</li>
+                    <li>**الفتحة**: نصب بەلگىسى (يۈكلىمە قوبۇل قىلغان پېئىللاردا).</li>
+                    <li>**الكسرة**: خفض/جر بەلگىسى (ئىسىملاردا).</li>
+                    <li>**السكون**: جزم بەلگىسى (توغرا پېئىللاردا).</li>
+                </ul>
+                <label class="check-container">
+                    <input type="checkbox"> <span>ئۆگىنىپ بولدۇم</span>
+                </label>
+            </div>
+
+            <div class="lesson-card">
+                <h3>3. قوشۇمچە بەلگىلەر (علامات الفرعية)</h3>
+                <div class="arabic-terms">الواو ، الألف ، الياء ، ثبوت/حذف النون</div>
+                <ul>
+                    <li>**بەش ئىسىم (الأسماء الخمسة)**: أبوك ، أخوك ، حموك...</li>
+                    <li>**بەش پېئىل (الأفعال الخمسة)**: يفعلان، تفعلان، يفعلون...</li>
+                    <li>تەسنىيە (جۈپ) ۋە جەمى مۆجىزە (جمع المذكر السالم) ئېئىرابلىرى.</li>
+                </ul>
+                <label class="check-container">
+                    <input type="checkbox"> <span>ئۆگىنىپ بولدۇم</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- WEEK 3 -->
+    <div class="week-module">
+        <div class="week-header">
+            <div class="week-title">3-ھەپتە: پېئىللار ۋە ئىسىملارنىڭ زەممىلىك (مرفوعات) ھالەتلىرى</div>
+            <span class="badge">15 - 21-كۈنلەر</span>
+        </div>
+        <div class="lesson-grid">
+            <div class="lesson-card">
+                <h3>1. پېئىللارنىڭ ھالەتلىرى (الأفعال)</h3>
+                <div class="arabic-terms">ماضٍ ، مضارع ، أمر</div>
+                <ul>
+                    <li>**ئۆتكەن زامان (ماضٍ)**: ھەمىشە فتحە ئۈستىگە مەبنىي.</li>
+                    <li>**بۇيرۇق زامان (أمر)**: جزم/سۇكۇن ئۈستىگە مەبنىي.</li>
+                    <li>**ھازىرقى زامان (مضارع)**: ناصب ۋە جازىم يۈكلىمىلىرى.</li>
+                </ul>
+                <label class="check-container">
+                    <input type="checkbox"> <span>ئۆگىنىپ بولدۇم</span>
+                </label>
+            </div>
+
+            <div class="lesson-card">
+                <h3>2. ئىگە بىلەن كېسىم (المبتدأ والخبر)</h3>
+                <div class="arabic-terms">الفاعل ، نائب الفاعل ، المبتدأ ، الخبر</div>
+                <ul>
+                    <li>**الفاعل (ئىگىلىگۈچى)**: پېئىلدىن كېيىن كېلىدىغان زەممىلىك ئىسىم.</li>
+                    <li>**نائب الفاعل**: مەجھۇل پېئىلنىڭ ئىگىسى.</li>
+                    <li>**المبتدأ والخبر**: ئىسىم جۈملىنىڭ ئاساسىي ئىككى ئېلېمېنتى.</li>
+                </ul>
+                <label class="check-container">
+                    <input type="checkbox"> <span>ئۆگىنىپ بولدۇم</span>
+                </label>
+            </div>
+
+            <div class="lesson-card">
+                <h3>3. ئۆزگەرتكۈچىلەر (كان، إن، ظن وأخواتها)</h3>
+                <div class="arabic-terms">كان وأخواتها ، إن وأخواتها</div>
+                <ul>
+                    <li>**كان وأخواتها**: ئىسىمنى رفع، كېسىمنى نصب قىلىدۇ.</li>
+                    <li>**إنَّ وأخواتها**: ئىسىمنى نصب، كېسىمنى رفع قىلىدۇ.</li>
+                    <li>جۈملە ئېئىرابىدىكى ئۆزگىرىشلەرنى تەھلىل قىلىش.</li>
+                </ul>
+                <label class="check-container">
+                    <input type="checkbox"> <span>ئۆگىنىپ بولدۇم</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- WEEK 4 -->
+    <div class="week-module">
+        <div class="week-header">
+            <div class="week-title">4-ھەپتە: پەتھىلىك (منصوبات) ۋە كېسىپ ئېلىنغان (مخفوضات) ئىسىملار</div>
+            <span class="badge">22 - 30-كۈنلەر</span>
+        </div>
+        <div class="lesson-grid">
+            <div class="lesson-card">
+                <h3>1. بەش مېفئۇل (المفاعيل الخمسة)</h3>
+                <div class="arabic-terms">المفعول به ، المطلق ، له ، معه ، فيه</div>
+                <ul>
+                    <li>**المفعول به (تولۇقلىغۇچى)**: ئىش-ھەرىكەت قارىتىلغان ئوبيېكت.</li>
+                    <li>**المفعول المطلق (مەنبە)**: پېئىلنىڭ مەنىسىنى تەكىتلىگۈچى.</li>
+                    <li>**ظرف الزمان/المكان (پەيت ۋە ئورۇن)**: ۋاقىت ۋە ئورۇن كۆرسەتكۈچى.</li>
+                </ul>
+                <label class="check-container">
+                    <input type="checkbox"> <span>ئۆگىنىپ بولدۇم</span>
+                </label>
+            </div>
+
+            <div class="lesson-card">
+                <h3>2. ھال، تەيز ۋە ئاجرىتىش (الحال، التمييز، الاستثناء)</h3>
+                <div class="arabic-terms">الحال ، التمييز ، المستثنى (إلا ، سوى)</div>
+                <ul>
+                    <li>**الحال**: ئىش-ھەرىكەتنىڭ قانداق يۈز بەرگەنلىك ھالىتى.</li>
+                    <li>**التمييز**: ئېنىقسىزلىقنى ئايدىڭلاشتۇرغۇچى ئىسىم.</li>
+                    <li>**الاستثناء**: «إلا» ۋە «سوى» ئارقىلىق مۇستەسنا قىلىش.</li>
+                </ul>
+                <label class="check-container">
+                    <input type="checkbox"> <span>ئۆگىنىپ بولدۇم</span>
+                </label>
+            </div>
+
+            <div class="lesson-card">
+                <h3>3. ئېگىلىك ۋە ئەگەشكۈچىلەر (المخفوضات والتوابع)</h3>
+                <div class="arabic-terms">بالحرف ، بالإصافة ، النعت ، العطف ، التوكيد ، البدل</div>
+                <ul>
+                    <li>**ئېگىلىك (مخفوضات)**: ھەرپ ئارقىلىق ياكى ئىزافەت (بالإضافة) ئارقىلىق.</li>
+                    <li>**ئەگەشكۈچىلەر (التوابع)**: نەت (سۈپەت)، ئەتف، تەئكىد، بەدەل.</li>
+                    <li>تولۇق متن الآجرومية جۈملە تەھلىلى جىپىسلاشتۇرۇش.</li>
+                </ul>
+                <label class="check-container">
+                    <input type="checkbox"> <span>ئۆگىنىپ بولدۇم</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>ئەرەب تىلى گرامماتىكىسى (الآجرومية) ئۆگىنىش كۆرسەتكۈچى — ئۆزلىكىدىن ئۆگىنىشكە قولايلىقلاشتۇرۇلدى.</p>
+    </footer>
+</div>
+
+</body>
+</html>
